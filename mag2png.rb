@@ -3,9 +3,14 @@
 
 require 'png'
 
+def usage
+  print "usage: ruby mag2png.rb mag_file_name.mag\n"
+  exit 1
+end
+
 def main
-  #ld = Loader.new "wsnkm001.mag"
-  ld = Loader.new "wsnkm042.mag"
+  usage unless ARGV[0]
+  ld = Loader.new ARGV[0]
   canvas = ld.load
   png = PNG.new canvas
   png.save "hoge.png"
